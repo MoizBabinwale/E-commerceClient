@@ -1,0 +1,68 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  /* color: white; */
+}
+
+.app {
+  /* background-image: url('https://4kwallpapers.com/images/walls/thumbs_3t/2470.jpg'); */
+  /* background-repeat: no-repeat ; */
+  /* background-size: cover; */
+  height: 100vh;
+  width: 100%;
+}
+
+.link {
+  color: rgb(0, 0, 0);
+}
+
+@media (max-width: 768px) {
+  .app {
+    width: 100vw;
+  }
+}
+
+
+/* Add these styles to your CSS or CSS-in-JS */
+.circle-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.circle {
+  width: 50px;
+  /* Adjust the size as needed */
+  height: 50px;
+  /* Adjust the size as needed */
+  border-radius: 50%;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  /* Adjust the font size as needed */
+  /* color: white; Adjust the text color as needed */
+}
+
+.name-label {
+  margin-top: 5px;
+  /* Adjust the margin as needed */
+  margin-left: 10px;
+}
+
+.divHideScroll::-webkit-scrollbar {
+  width: 0 !important
+}
+
+.divHideScroll {
+  overflow-y: "hidden";
+}
+
+.divHideScroll {
+  -ms-overflow-style: none;
+}
+
+/* body{
+  overflow-y:hidden;
+  } */
