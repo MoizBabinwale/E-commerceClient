@@ -1,5 +1,7 @@
-import { ALLPRODUCT, FILTERPRODUCT, GETALLSLIDERS, PRODUCTCREATED } from "../Constants/Constant";
+import { useSelector } from "react-redux";
+import { ALLPRODUCT, FILTERPRODUCT, GETALLSLIDERS, PRODUCTCREATED, SLIDERCREATED } from "../Constants/Constant";
 import axios from 'axios';
+import { useEffect } from "react";
 
 const API = 'http://localhost:5000/api/products'
 const SLIDERAPI = 'http://localhost:5000/api/sliders'
@@ -7,10 +9,18 @@ const SLIDERAPI = 'http://localhost:5000/api/sliders'
 export const ProductCreated = () => ({
     type: PRODUCTCREATED,
 })
-var profileData = JSON.parse(localStorage.getItem("Profile"))
-if (profileData) {
-    var token = profileData.token
+
+
+var token;
+if (localStorage.Profile !== "undefined") {
+    var profileData = JSON.parse(localStorage.getItem("Profile"));
+
+
+    if (profileData && profileData.token) {
+        token = profileData.token;
+    }
 }
+
 export const CreateProductApi = ({ name, description, price, quantity, image }) => {
     return async dispatch => {
         try {
@@ -79,12 +89,50 @@ export const getAllSliders = () => {
     return async dispatch => {
         try {
             const response = await axios.get(SLIDERAPI + "/")
-            console.log("lider", response);
             dispatch(sliderImages(response.data))
         } catch (error) {
             console.log("error ", error);
 
         }
 
+    }
+}
+
+export const sliderCreated = (responseData) => ({
+    type: SLIDERCREATED,
+    payload: { responseData }
+});
+
+export const addNewSlider = (formData) => {
+    console.log(formData);
+    return async dispatch => {
+        try {
+            const response = await axios.post(SLIDERAPI + "/create", formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            })
+            if (response.status === 200) {
+                // dispatch(sliderCreated(response.data.sliders))
+                return response;
+            }
+        } catch (error) {
+            console.log("error ", error);
+            throw error;
+        }
+    }
+}
+
+export const deleteSldier = (ID) => {
+    return async dispatch => {
+        try {
+            const response = await axios.delete(SLIDERAPI + "/deleteSlider/" + ID);
+            console.log(response);
+            if (response) {
+                window.location.reload()
+            }
+        } catch (error) {
+            console.log("error ", error);
+        }
     }
 }

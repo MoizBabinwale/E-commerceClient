@@ -22,7 +22,7 @@ function Users() {
                     <div className="shadow p-3 mb-5 bg-body-tertiary rounded  bg-opacity-10 border border-info border-start-1 rounded-end">
                         <div className='circle-container'>
                             <div className='circle' style={{ color: "white" }}>{item.name.charAt(0).toUpperCase()}</div>
-                            <label className='name-label' ><b style={{ color: "black" }}>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</b></label>
+                            <label className='name-label linkColor' ><b>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</b></label>
                         </div>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, SIGNUPSUCCESS, SIGNUPFAIL,
 
 const initialState = {
     isLoading: false,
-    isLoggedIn: false,
+    isLoggedIn: null,
     responseData: null, // Add responseData property to your initial state
     // ...other properties
 };

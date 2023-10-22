@@ -55,7 +55,7 @@ const CreateProduct = () => {
         };
     }
     return (
-        <div className='divHideScroll' style={{ overflow: "hidden", overflowY: "hidden" }}>
+        <div className='divHideScroll' >
             <div className='row '>
                 <div className='col-lg-6'>
                     <img src={luffy} alt='' style={{ height: "60%", width: "100%" }} />
@@ -80,7 +80,7 @@ const CreateProduct = () => {
                     <div className='col-lg-8 p-2 m-2'>
                         <label className='mb-2' >Prize</label>
                         <div className="input-group">
-                            <input type="number" className="form-control" aria-label="Dollar amount (with dot and two decimal places)" style={{ WebkitAppearance: 'textfield', MozAppearance: 'textfield' }} onChange={(e) => setPrice(e.target.value)} />
+                            <input type="number" placeholder='Enter Prize' className="form-control" aria-label="Dollar amount (with dot and two decimal places)" style={{ WebkitAppearance: 'textfield', MozAppearance: 'textfield' }} onChange={(e) => setPrice(e.target.value)} />
                             <span className="input-group-text">$</span>
                             <span className="input-group-text">{price}.00</span>
                         </div>
