@@ -5,6 +5,7 @@ import { addNewSlider, getAllSliders, serchedFunction } from '../actions/Product
 import Swal from 'sweetalert2'
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md"
 import logo from "../assets/logo.jpg"
+import { CiShoppingCart } from "react-icons/ci";
 
 
 const Navbar = () => {
@@ -116,14 +117,11 @@ const Navbar = () => {
             return;
         }
         var name = document.getElementById("SliderName").value;
-        console.log(selectedFile);
         formData.delete('image'); // Clear previous image data
         formData.delete('name');
         const newFormData = new FormData(); // Create a new FormData object
         newFormData.append('image', selectedFile);
         newFormData.append('name', name);
-        console.log(newFormData.get('image')); // Log the 'image' field
-        console.log(newFormData.get('name'));  // Log the 'name' field
 
         setFormData(newFormData)
     }
@@ -150,108 +148,27 @@ const Navbar = () => {
         }
     }
 
+    // login
+    // users
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-            <div className="container-fluid">
-                <Link to="/" style={{ width: "60px", height: "60px" }}>
-                    <img src={logo} style={{ width: "100%", height: "100%" }} alt='logo' />
-                </Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <span className="nav-link active" aria-current="page" >
-                                <Link style={{ textDecoration: "none", }} className='linkColor' to='/'>Home</Link>
-                            </span>
-                        </li>
-                        <li className="nav-item">
-                            <span className="nav-link active" aria-current="page"><Link style={{
-                                textDecoration: "none",
+        <div className='w-full'>
 
-                            }} className='linkColor' to='/users'>Users</Link></span>
-                        </li>
-                        {!login ? (
-                            <li className="nav-item">
-                                <span className="nav-link" >
-                                    <Link style={{
-                                        textDecoration: "none",
-                                    }} className='linkColor' to='/login'>Login</Link>
-                                </span>
-                            </li>
-                        ) : (
-                            <li className="nav-item" onClick={() => handleLogout()}>
-                                <span className="nav-link linkColor" style={{ cursor: "pointer" }}>
-                                    Logout
-                                </span>
-                            </li>
-                        )}
-                        {isAdmin && (
-                            <React.Fragment>
-
-                                <li className="nav-item">
-                                    <span className="nav-link " aria-disabled="true"><Link style={{
-                                        textDecoration: "none",
-                                    }} className='linkColor' to='/craeteProduct'>Add New Products</Link></span>
-                                </li>
-                                <button type="button" className="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    Add New Slider
-                                </button>
-                            </React.Fragment>
-                        )
-                        }
-                    </ul>
-                    <form className="d-flex w-50" role="search">
-                        <div className='w-75 me-2'>
-                            <input className="form-control me-2 serchBar" id='searchedTxt' type="search" placeholder="Search" aria-label="Search" />
-                            {filterList.length > 0 && (
-                                <div className='p-3 rounded-bottom bg-gradient position-absolute' style={{ backgroundColor: "#94a3b8", width: "35%", zIndex: 1, overflowY: "auto", }}>
-                                    {filterList.map((item, key) => (
-                                        <span className='d-flex flex-row p-2' style={{ width: "100%" }} onClick={() => getProductByid(item)}>
-                                            <img width={50} height={30} src={item.productImage} alt='ProductImage' />&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <b> {item.name}</b>
-                                        </span>
-                                    ))}
-                                </div>)}
-                        </div>
-                        <button className="btn btn-outline-success" onClick={handleFilter}>Search</button>
-                        <div className='nightModeBtn'>
-                            {isLightMode ? (
-                                <MdDarkMode onClick={() => changeMode()} />) :
-                                (
-                                    <MdOutlineLightMode onClick={() => changeMode()} />
-                                )}
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-
-            {/* new Slider Modal  */}
-            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Add New Slider Image</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            <div className='col-lg-12 col-sm-10'>
-                                <input type='text' id='SliderName' className="form-control p-1 mb-3" placeholder='Enter Slider Name' />
-                                <input type='file' id='sliderFile' className="form-control p-1" accept="image/*" onChange={(e) => handleSliderImage(e)} />
-                            </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" id='closeSliderModal' data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={() => handleSaveSlider()} >Save changes</button>
-                        </div>
+            <div className='grid grid-cols-3 gap-4'>
+                <p>1</p>
+                <div>
+                    <div>
+                        <ul className='list-none flex hover:text-gray-800 w-full justify-evenly flex-row '>
+                            <Link className='hover:text-gray-800' to="/"><li>Home</li></Link>
+                            <Link className='hover:text-gray-800' to="/users"><li>Users</li></Link>
+                            <Link className='hover:text-gray-800' to="/login"><li>Signup/Login</li></Link>
+                        </ul>
                     </div>
                 </div>
-            </div>
-
-
-        </nav>
+                <div className='flex items-end justify-end'>
+                    <span><CiShoppingCart /></span>
+                </div>
+            </div >
+        </div >
     );
 };
 

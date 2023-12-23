@@ -2,7 +2,7 @@ import React from 'react'
 
 function DetailPage() {
     return (
-        <div>
+        <div className='bg-red-500'>
             Detail Page
         </div>
     )

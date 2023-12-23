@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import axios from "axios"
 import { Alert } from '@mui/material';
 import { useNavigate } from "react-router-dom"
-import Cookies from "js-cookie"
 import { useDispatch, useSelector } from 'react-redux';
 import { login, singUp } from '../actions/action';
 import { Rings } from 'react-loader-spinner'
@@ -20,9 +18,10 @@ function Login() {
 
     const loginState = useSelector(state => state.login);
     const signupState = useSelector(state => state.signup);
+
     useEffect(() => {
         if (loginState.responseData) {
-            const status = loginState.responseData.data;
+            // const status = loginState.responseData.data;
             <Alert severity="success">
                 Login success...!
             </Alert>
@@ -42,7 +41,7 @@ function Login() {
         }
         if (signupState.responseData) {
             const response = signupState.responseData
-            if (response.responseData.message == "User created successfully") {
+            if (response.responseData.message === "User created successfully") {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',

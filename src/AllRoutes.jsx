@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import CreateProduct from './components/CreateProduct'
 import Users from './components/Users'
+import DetailPage from './components/DetailPage'
 import { useLocation } from 'react-router-dom';
 
 const AllRoutes = () => {
@@ -27,6 +28,7 @@ const AllRoutes = () => {
       <Route path='/login' element={<Login />} />
       <Route path='/craeteProduct' element={<CreateProduct />} />
       <Route path='/users' element={<Users />} />
+      <Route path='/detailsPage' element={<DetailPage />} />
     </Routes>
   )
 }

@@ -65,7 +65,7 @@ function Home() {
                                     <div className="card-header userNameClr">
                                         <b> Posted By &nbsp;:&nbsp; {item.userName}</b>
                                     </div>
-                                    <div className="card-body">
+                                    <div className="card-body ">
                                         <div className='row' >
                                             <div className='col-lg-5 '>
                                                 <img className='shadow-lg' src={item.productImage} alt='ProductImg' style={{ borderRadius: "20px", height: "100px", width: "140px" }} />
@@ -73,7 +73,7 @@ function Home() {
                                             <div className='col-lg-7'>
                                                 <h5 id='titleName' style={{ color: "black" }} >{item.name}</h5>
                                                 <p style={{ color: "black" }}>{item.description}</p>
-                                                <Link to="/" className="btn btn-dark  p-2 m-2" style={{ zIndex: 2 }}>See Details</Link>
+                                                <Link to="/detailsPage" className="btn btn-dark  p-2 m-2" style={{ zIndex: 2 }}>See Details</Link>
                                                 <Link to="/" className="btn btn-success m-2">Edit</Link>
                                             </div>
                                         </div>
