@@ -1,9 +1,9 @@
 // actions.js
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, SETADMIN, SIGNUPSUCCESS, SIGNUPFAIL, SIGNUPREQUEST, FETCHALLUSER } from "../Constants/Constant";
 import axios from "axios";
+import { APICONSTANTS } from "../Constants/ApiConstant";
 // import { setCurrentUser } from './currentUser';
 
-const API = "https://e-commerce-server-sooty.vercel.app/api";
 export const loginRequest = () => ({
   type: LOGIN_REQUEST,
 });
@@ -40,7 +40,7 @@ export const login = (userEmail, password) => {
   return async (dispatch) => {
     try {
       dispatch(loginRequest());
-      const response = await axios.post(API + "/login", {
+      const response = await axios.post(APICONSTANTS.API + "/login", {
         userEmail,
         password,
       });
@@ -63,14 +63,23 @@ export const singUp = (name, userEmail, password, isAdmin) => {
   return async (dispatch) => {
     try {
       dispatch(signUpRequest());
-      const response = await axios.post(API + "/signup", {
-        name,
-        userEmail,
-        password,
-        isAdmin,
-      });
-
-      dispatch(signUpSuccess(response.data));
+      const response = await axios.post(
+        APICONSTANTS.API + "/signup",
+        JSON.stringify({
+          name,
+          userEmail,
+          password,
+          isAdmin,
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response) {
+        dispatch(signUpSuccess(response.data));
+      }
     } catch (error) {
       // Handle error and dispatch failure action
       dispatch(signUpFail());
@@ -81,11 +90,19 @@ export const singUp = (name, userEmail, password, isAdmin) => {
 export const getAllUser = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(API + "/getAllUser");
+      const response = await axios.get(APICONSTANTS.API + "/getAllUser");
       dispatch(fetchAllUsers(response.data));
     } catch (error) {
       // Handle error and dispatch failure action
       console.log("error", error);
     }
   };
+};
+
+export const handleLogout = () => {
+  localStorage.removeItem("Profile");
+  localStorage.removeItem("isAdmin");
+  localStorage.removeItem("expireTime");
+  localStorage.removeItem("cart");
+  window.location.reload();
 };

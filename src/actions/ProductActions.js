@@ -3,8 +3,8 @@ import { ALLPRODUCT, FILTERPRODUCT, GETALLSLIDERS, PRODUCTCREATED, SLIDERCREATED
 import axios from "axios";
 import { useEffect } from "react";
 
-const API = "https://e-commerce-server-sooty.vercel.app/api/products";
-const SLIDERAPI = "https://e-commerce-server-sooty.vercel.app/api/sliders";
+const API = "http://localhost:5000/api/products";
+const SLIDERAPI = "http://localhost:5000/api/sliders";
 
 export const ProductCreated = () => ({
   type: PRODUCTCREATED,

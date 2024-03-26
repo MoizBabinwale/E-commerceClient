@@ -1,4 +1,7 @@
 @tailwind base;
+.container {
+  margin-top: 40px;
+}
 
 @tailwind components;
 @tailwind utilities;

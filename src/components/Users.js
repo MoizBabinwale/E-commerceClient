@@ -16,7 +16,7 @@ function Users() {
     }
   }, [allUsers]);
   return (
-    <div className="row m-2 pt-16">
+    <div className="row  mx-2 mt-16 pt-4">
       {userdata.map((item, key) => (
         <div className="col-lg-2 mt-2" key={key} style={{ cursor: "pointer" }}>
           <div className="shadow p-3 mb-5 bg-body-tertiary rounded  bg-opacity-10 border border-info border-start-1 rounded-end">

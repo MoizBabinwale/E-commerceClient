@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import CreateProduct from "./components/CreateProduct";
+import Cart from "./components/Cart";
 import Users from "./components/Users";
 import DetailPage from "./components/DetailPage";
 import { useLocation } from "react-router-dom";
+import Success from "./components/Success";
 
 const AllRoutes = () => {
   const location = useLocation();
@@ -29,6 +31,8 @@ const AllRoutes = () => {
       <Route path="/craeteProduct" element={<CreateProduct />} />
       <Route path="/users" element={<Users />} />
       <Route path="/product-details/:productId" element={<DetailPage />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/Success" element={<Success />} />
     </Routes>
   );
 };
